@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{% block lang %}en{% endblock %}">
+<head>{% block head %}
+
+    {% block meta %}
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for("react.static", filename="react/favicon.ico") }}" />
+    <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1{% endblock %}" />
+    <meta name="description" content="{% block description %}Web site created using create-react-app{% endblock %}"/>
+    <link rel="apple-touch-icon" href="{{ url_for("react.static", filename="react/logo192.png") }}" />
+    <link rel="manifest" href="{{ url_for("react.static", filename="react/manifest.json") }}" />
+    {% endblock meta %}
+
+    <title>{% block title %}{{config.get("REACT_TITLE", "Flask-React App")}}{% endblock %}</title>
+
+    {% block styles %}
+        {% if "bootstrap" in config.get("REACT_EXTENSIONS") %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% endif %}
+        {% if "material" in config.get("REACT_EXTENSIONS") %}
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+            <style>body{font-family: "Roboto", Arial, Helvetica, sans-serif;}</style>
+        {% endif %}
+    {% endblock %}
+
+    {% if config.get("FLASK_ENV", "development") == "production" %}
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    {% else %}
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    {% endif %}
+
+{% endblock %}</head>
+<body>{% block body %}
+    <noscript>{% block noscript %}You need to enable JavaScript to run this app.{% endblock %}</noscript>
+{% block content %}<div id="root"></div>{% endblock %}
+{% block scripts %}
+    {% if "bootstrap" in config.get("REACT_EXTENSIONS") %}
+        <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
+    {% endif %}
+    {% if "material" in config.get("REACT_EXTENSIONS") %}
+        {% if config.get("FLASK_ENV", "development") == "production" %}
+            <script src="https://unpkg.com/@material-ui/core@4.6.0/umd/material-ui.production.min.js" crossorigin></script>
+        {% else %}
+            <script src="https://unpkg.com/@material-ui/core@4.6.0/umd/material-ui.development.js" crossorigin></script>
+        {% endif %}
+    {% endif %}
+    {% if "socket.io" in config.get("REACT_EXTENSIONS") or "components" in config.get("REACT_EXTENSIONS")%}
+        <script src="{{ url_for('react.static', filename='vendor/socket.io/socket.io.js') }}"></script>
+    {% endif %}
+    {% if "components" in config.get("REACT_EXTENSIONS") %}
+        <script src="{{ url_for('react.static', filename='react/js/components.js') }}"></script>
+    {% endif %}
+    {% block react %}{% endblock %}
+    <script src="{{ url_for("react.static", filename="react/js/index.js") }}" type="module"></script>
+{% endblock %}
+{% endblock %}</body>
+</html>

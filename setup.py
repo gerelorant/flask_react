@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='Flask-ReactJS',
-    version='0.2.2',
+    version='0.2.3',
     packages=['flask_react'],
     url='https://github.com/gerelorant/flask_react',
     license='MIT',

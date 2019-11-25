@@ -48,7 +48,7 @@
         {% endif %}
     {% endif %}
     {% if "socket.io" in config.get("REACT_EXTENSIONS") or "components" in config.get("REACT_EXTENSIONS")%}
-        <script src="{{ url_for('react.static', filename='vendor/socket.io.slim.min.js') }}"></script>
+        <script src="{{ url_for('react.static', filename='react/vendor/socket.io.slim.min.js') }}"></script>
     {% endif %}
     {% if "components" in config.get("REACT_EXTENSIONS") %}
         <script src="{{ url_for('react.static', filename='react/js/components.js') }}"></script>

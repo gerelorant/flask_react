@@ -28,8 +28,8 @@
         <script src="{{ url_for('react.static', filename='react/vendor/react.production.min.js') }}" crossorigin></script>
         <script src="{{ url_for('react.static', filename='react/vendor/react-dom.production.min.js') }}" crossorigin></script>
     {% else %}
-        <script src="{{ url_for('react.static', filename='react/vendor/react.development.min.js') }}" crossorigin></script>
-        <script src="{{ url_for('react.static', filename='react/vendor/react-dom.development.min.js') }}"></script>
+        <script src="{{ url_for('react.static', filename='react/vendor/react.development.js') }}" crossorigin></script>
+        <script src="{{ url_for('react.static', filename='react/vendor/react-dom.development.js') }}"></script>
     {% endif %}
 
 {% endblock %}</head>

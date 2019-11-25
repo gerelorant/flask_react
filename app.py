@@ -5,7 +5,7 @@ from flask_react import React
 app = Flask(__name__)
 react = React(
     app,
-    extensions=("material", "components"),
+    extensions=("bootstrap"),
     jsx_folder='static/react/jsx/'
 )
 

@@ -50,6 +50,9 @@ function App() {
   )
 }
 ```
+JSX files are converted using Babel CLI. In order for this to work, Node.JS 
+needs to be installed.
+
 Additional files that should be put in the `static/react/` folder are:
 - `favicon.ico`
 - `logo192.png`, `logo512.png`

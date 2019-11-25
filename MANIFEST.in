@@ -1,0 +1,3 @@
+recursive-include flask_react/templates *
+recursive-include flask_react/static *
+include flask_react/*
